@@ -23,6 +23,4 @@ export class MainController {
             at: new Date().toISOString()
         }
     }
-
-    
 }

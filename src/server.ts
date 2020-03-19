@@ -5,10 +5,6 @@ import { ExceptionConvert } from "@napp/exception";
 import { MainController } from "./api/main.controller";
 import loggerDefault from "./logger";
 
-
-
-
-
 const express = require('express');
 const morgan = require('morgan');
 
@@ -52,4 +48,5 @@ async function startup() {
 }
 
 
+// tslint:disable-next-line: no-console
 startup().catch(console.log);

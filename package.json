@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "console.build": "webpack --config=opt/webpack.config.js --mode=production",
-    "console.watch": "webpack --config=opt/webpack.config.js --mode=development --watch",
-    "console.nodemon": "nodemon --config opt/nodemon.config.json",
+    "build": "webpack --config=opt/webpack.config.js --mode=production",
+    "watch": "webpack --config=opt/webpack.config.js --mode=development --watch",
+    "nodemon": "nodemon --config opt/nodemon.config.json",
+    "tslint": "tslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
