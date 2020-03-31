@@ -4,6 +4,7 @@ import { ClassrouterFactory, JsonResponseFilter } from 'classrouter'
 import { ExceptionConvert } from "@napp/exception";
 import { MainController } from "./api/main.controller";
 import loggerDefault from "./logger";
+import { dbInit } from "./model";
 
 const express = require('express');
 const morgan = require('morgan');
@@ -11,6 +12,13 @@ const morgan = require('morgan');
 
 async function startup() {
     const app = express();
+
+    try {
+        await dbInit();
+    } catch (error) {
+        loggerDefault.error('db connectio error', ExceptionConvert(error).toObject());
+        throw error;
+    }
 
     if (confEnv.LOG_ACCESS) {
         app.use(morgan(confEnv.LOG_ACCESS_FORMAT));

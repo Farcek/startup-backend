@@ -1,10 +1,14 @@
 import { Get, Action, Controller, QueryParam, RequestParam } from "classrouter";
+import { CustomerController } from "./customer/controller";
 
 
 
 @Controller({
     name: 'main',
-    path: '/console'
+    path: '/console',
+    controllers : [
+        CustomerController
+    ]
 })
 export class MainController {
 
