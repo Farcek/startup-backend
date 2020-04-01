@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../console-common"
+		},
+		{
+			"path": "../console-dto"
+		},
+		{
+			"path": "../core"
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "console-backend\\node_modules\\typescript\\lib"
+	}
+}

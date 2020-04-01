@@ -1,5 +1,6 @@
 import { Get, Action, Controller, QueryParam, RequestParam } from "classrouter";
 import { CustomerController } from "./customer/controller";
+import { LoginController } from "./login";
 
 
 
@@ -7,7 +8,8 @@ import { CustomerController } from "./customer/controller";
     name: 'main',
     path: '/console',
     controllers : [
-        CustomerController
+        CustomerController,
+        LoginController
     ]
 })
 export class MainController {

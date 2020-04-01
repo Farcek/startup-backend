@@ -1,7 +1,7 @@
 import knex from 'knex'
 
-import { confDatabse } from '../config'
-import { loggerSql } from '../logger'
+import { confDatabse } from 'src/config'
+import { loggerSql } from 'src/logger'
 
 export const connection = knex({
     client: confDatabse.DB_CLIENT,

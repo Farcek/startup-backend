@@ -1,14 +1,14 @@
 import "reflect-metadata";
-import confEnv from "./config";
+import confEnv from "src/config";
 import { ClassrouterFactory, JsonResponseFilter } from 'classrouter'
 import { ExceptionConvert } from "@napp/exception";
-import { MainController } from "./api/main.controller";
-import loggerDefault from "./logger";
-import { dbInit } from "./model";
+import { MainController } from "src/api/main.controller";
+import loggerDefault from "src/logger";
+import { dbInit } from "src/model";
 
 const express = require('express');
 const morgan = require('morgan');
-
+const cors = require('cors')
 
 async function startup() {
     const app = express();
@@ -23,6 +23,7 @@ async function startup() {
     if (confEnv.LOG_ACCESS) {
         app.use(morgan(confEnv.LOG_ACCESS_FORMAT));
     }
+    app.use(cors())
 
     app.use(express.static('dist.console.frontend'));
 

@@ -1,6 +1,6 @@
 import * as winston from 'winston';
 import * as path from 'path';
-import confEnv, { confSys } from './config';
+import confEnv, { confSys } from 'src/config';
 
 const formatFile = winston.format.combine(
     winston.format.timestamp({}),

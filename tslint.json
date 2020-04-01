@@ -6,12 +6,13 @@
     "jsRules": {},
     "rules": {
         "prefer-const": false,
-        "no-var-requires":false,
-        "variable-name" : [
+        "no-var-requires": false,
+        "variable-name": [
             true,
             "allow-leading-underscore",
             "allow-snake-case"
-        ]
+        ],
+        "max-classes-per-file": false
     },
     "rulesDirectory": []
 }

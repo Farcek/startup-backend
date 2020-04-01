@@ -36,6 +36,7 @@ const server = {
         alias: {
             //common: path.resolve(__dirname, '../common'),
             'src': path.resolve('src'),
+            'console-dto': path.resolve('../console-dto'),
         }
     },
     plugins: [

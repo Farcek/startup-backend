@@ -1,10 +1,10 @@
 {
-  "name": "frontends",
-  "version": "1.0.0",
-  "description": "",
+  "name": "userly-banner-backend",
+  "version": "2.0.0",
+  "description": "userly banner system",
   "scripts": {
-    "db:init": "node opt/db.init.js", 
-    "db:new": "knex migrate:make", 
+    "db:init": "node opt/db.init.js",
+    "db:new": "knex migrate:make",
     "db:up": "knex migrate:latest",
     "db:down": "knex migrate:rollback",
     "build": "webpack --config=opt/webpack.config.js --mode=production",
@@ -16,7 +16,11 @@
   },
   "dependencies": {
     "@napp/exception": "^2.0.0",
-    "classrouter": "^4.4.1",
+    "body-parser": "^1.19.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.1",
+    "classrouter": "4.4.2",
+    "cors": "^2.8.5",
     "envalid": "^6.0.1",
     "express": "^4.17.1",
     "knex": "^0.20.13",
