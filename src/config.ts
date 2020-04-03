@@ -1,5 +1,16 @@
-import envalid from 'envalid';
+import envalid, { makeValidator } from 'envalid';
+import path from 'path';
+import fs from 'fs';
+const fileContent = makeValidator(x => {
+    let p = path.resolve(x);
+    if (fs.existsSync(p)) {
+        let c = fs.readFileSync(p);
+        return c;
+    } else {
+        throw new Error(`file not found. path=${p}`);
+    }
 
+});
 export const confEnv = envalid.cleanEnv(
     process.env,
     {
@@ -20,13 +31,13 @@ export const confEnv = envalid.cleanEnv(
             choices: ['mysql', 'mysql2', 'pg', 'oracledb', 'mssql']
         }),
         DB_HOST: envalid.host({ default: 'localhost' }),
-        DB_PORT: envalid.port({default : 3306}),
+        DB_PORT: envalid.port({ default: 3306 }),
         DB_DATABASE: envalid.str({ docs: 'db database name' }),
         DB_USERNAME: envalid.str({ docs: 'db username' }),
         DB_PASSWORD: envalid.str({ docs: 'db userpassword' }),
 
-        DB_CHARSET: envalid.str({default : 'utf8', docs: 'db connection charset' }),
-        DB_TIMEZONE: envalid.str({default : '+08:00', docs: 'db connection timezone', }),
+        DB_CHARSET: envalid.str({ default: 'utf8', docs: 'db connection charset' }),
+        DB_TIMEZONE: envalid.str({ default: '+08:00', docs: 'db connection timezone', }),
 
         DB_POOL_MIN: envalid.num({ default: 1, docs: 'db connection pool min', }),
         DB_POOL_MAX: envalid.num({ default: 10, docs: 'db connection pool nax', }),
@@ -80,6 +91,12 @@ export const confEnv = envalid.cleanEnv(
             choices: ['debug', 'info', 'warn', 'error'],
             default: 'info', devDefault: 'debug', desc: 'default logg console write level(min value)'
         }),
+
+        // userly
+        USERLY_KEY_APP : envalid.str({desc : 'userly application id'}),
+        USERLY_KEY_URL : envalid.url({default : 'https://api.userly.mn', desc : 'userly application base url'}),
+        USERLY_KEY_PRI : fileContent({}),
+        USERLY_KEY_PUB : fileContent({})
     },
     { strict: true }
 );
@@ -108,4 +125,12 @@ export namespace confDatabse {
     export const DB_POOL_MAX = confEnv.DB_POOL_MAX;
 
 
+}
+
+
+export const confUserly = {
+    USERLY_KEY_APP: confEnv.USERLY_KEY_APP,
+    USERLY_KEY_URL: confEnv.USERLY_KEY_URL,
+    USERLY_KEY_PRI: confEnv.USERLY_KEY_PRI,
+    USERLY_KEY_PUB: confEnv.USERLY_KEY_PUB
 }

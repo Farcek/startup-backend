@@ -4,7 +4,7 @@ const nodeExternals = require('webpack-node-externals');
 
 const server = {
     devtool: 'inline-source-map',
-
+    // cache: false,
     entry: {
         server: 'src/server.ts'
     },
@@ -29,10 +29,11 @@ const server = {
     externals: [nodeExternals()],
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-        modules: [
-            path.resolve('node_modules'),
-            path.resolve('.'),
-        ],
+        // modules: [
+        //     path.resolve('node_modules'),
+        //     path.resolve('.'),
+        //     path.resolve('.'),
+        // ],
         alias: {
             //common: path.resolve(__dirname, '../common'),
             'src': path.resolve('src'),

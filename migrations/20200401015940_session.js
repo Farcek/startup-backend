@@ -9,6 +9,7 @@ exports.up =
             .createTable('sessions', function (table) {
                 table.string('id').primary();
                 table.string('userly').notNullable();
+                table.string('userly_token').notNullable();
                 table.dateTime('created_at').notNullable();
                 table.dateTime('expired_at').notNullable();
             })
